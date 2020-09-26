@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>{{imageWidth}} x {{imageHeight}}</h1>
+    
+    <h1>{{ imageWidth }} x {{ imageHeight }}</h1>
     <img
       @load="imgLoaded"
       src="https://www.pamperedchef.com/iceberg/com/recipe/1125065-lg.jpg"
@@ -12,12 +13,13 @@
 export default {
   data: () => ({
     imageWidth: 0,
-    imageHeight:0,
+    imageHeight: 0,
   }),
   methods: {
     imgLoaded(event) {
-      this.imageWidth = event.target.width;
-      this.imageHeight = event.target.height;
+      const { width, height } = event.target;
+      this.imageWidth = width;
+      this.imageHeight = height;
     },
   },
 };
