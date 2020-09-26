@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h1>Title</h1>
     <input v-model="text" />
-    <button @click="add" :disabled="!text">Add</button>
-    <ul>
-      <li :class="{ grey: item.done }" 
-      v-for="item in list" 
-      :key="item.text">
+    <button @click="add" :disabled="!text" :class="{ grey: invalid }" >Add</button>
+    <br />
+    <!-- <h2 :class="{ red: textLength > 10 }"> -->
+    <h2 :class="{ red: invalid }">
+      {{ textLength }}
+    </h2>
+    <ul id="list">
+      <li :class="{ grey: item.done }" v-for="item in list" :key="item.text">
         <input type="checkbox" v-model="item.done" />
         {{ item.text }}
       </li>
@@ -20,9 +22,18 @@ export default {
     text: "",
     list: [],
   }),
+  computed: {
+    textLength() {
+      return this.text.length;
+    },
+    invalid() {
+      return this.text.length <= 0 || this.text.length >10;
+    },
+  },
   methods: {
     add() {
       if (!this.text) return;
+      if (this.invalid) return;
       const item = {
         text: this.text,
         done: false,
@@ -42,7 +53,10 @@ export default {
 .grey {
   color: #ddd;
 }
-.grey b{
-    color: black;
+.red {
+  color: red;
+}
+.grey b {
+  color: black;
 }
 </style>

@@ -1,14 +1,14 @@
 <template>
-<ImageViewer/>
+<CityCafe/>
 </template>
 
 <script>
-import ImageViewer from './components/ImageViewer.vue'
+import CityCafe from './components/CityCafe.vue'
 
 export default {
   name: 'App',
   components: {
-    ImageViewer
+    CityCafe
   }
 }
 </script>
