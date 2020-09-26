@@ -1,16 +1,16 @@
 <template>
   <div>
+    <h1>Title</h1>
     <input v-model="text" />
     <button @click="add" :disabled="!text">Add</button>
     <ul>
-      <li v-for="item in list" :key="item.text">
+      <li :class="{ grey: item.done }" 
+      v-for="item in list" 
+      :key="item.text">
         <input type="checkbox" v-model="item.done" />
         {{ item.text }}
       </li>
     </ul>
-    <pre>
-        {{ JSON.stringify(list, null, 2) }}
-    </pre>
   </div>
 </template>
 
@@ -39,4 +39,10 @@ export default {
 </script>
 
 <style scoped>
+.grey {
+  color: #ddd;
+}
+.grey b{
+    color: black;
+}
 </style>
