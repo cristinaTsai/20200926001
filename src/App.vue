@@ -1,14 +1,14 @@
 <template>
-<CityCafe/>
+<CityCafeAsync/>
 </template>
 
 <script>
-import CityCafe from './components/CityCafe.vue'
+import CityCafeAsync from './components/CityCafeAsync.vue'
 
 export default {
   name: 'App',
   components: {
-    CityCafe
+    CityCafeAsync
   }
 }
 </script>
