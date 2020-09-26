@@ -1,14 +1,14 @@
 <template>
-<Todo/>
+<ImageViewer/>
 </template>
 
 <script>
-import Todo from './components/Todo.vue'
+import ImageViewer from './components/ImageViewer.vue'
 
 export default {
   name: 'App',
   components: {
-    Todo
+    ImageViewer
   }
 }
 </script>
