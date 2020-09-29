@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        #root {
+            width: 310px;
+        }
+
+        .grid {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid grey;
+            font-size: 100px;
+            line-height: 100px;
+            text-align: center;
+            vertical-align: middle;
+            font-family: Arial;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='root'>
+        <div class='grid' v-for="(value, i) in grids" @click="setGrid(i)">
+            {{value}}
+        </div>
+        <button @click='result'>Reset</button>
+    </div>
+</body>
+
+<script>
+    const initState = () => ({
+        grids: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+        mark: "O"
+    });
+    new Vue({
+        el: '#root',
+        data: initState(),
+        methods: {
+            result() {
+                const state = initState()
+                this.grids  = state.grids
+                this.mark = state.mark
+            },
+            setGrid(idx) {
+                if (this.grids[idx] !== ' ') return
+                this.grids.splice(idx, 1, this.mark)
+                this.mark = (
+                    this.mark === 'O' ? 'X' : 'O')
+            },
+
+        },
+    })
+</script>
+
+</html>
