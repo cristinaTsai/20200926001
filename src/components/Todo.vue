@@ -1,13 +1,19 @@
 <template>
-  <div>
+  <v-container>
     <TodoInput @input="onInput" />
-    <ul id="list">
-      <li :class="{ grey: item.done }" v-for="item in list" :key="item.text">
-        <input type="checkbox" v-model="item.done" />
-        {{ item.text }}
-      </li>
-    </ul>
-  </div>
+    <v-list>
+      <v-list-item v-for="item in list" :key="item.text">
+        <v-list-item-action>
+          <v-checkbox v-model="item.done" />
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title :class="{'accent--text':item.done}">
+            {{ item.text }}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-container>
 </template>
 
 <script>
@@ -23,21 +29,10 @@ export default {
       const item = {
         text,
         done: false,
-      }
-      this.list.unshift(item)
-    }
+      };
+      this.list.unshift(item);
+    },
   },
 };
 </script>
 
-<style scoped>
-.grey {
-  color: #ddd;
-}
-.red {
-  color: red;
-}
-.grey b {
-  color: black;
-}
-</style>
